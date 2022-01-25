@@ -21,5 +21,8 @@ func cleanUrl(anchor *url.URL, rel string) (string, error) {
 	}
 	abs := anchor.ResolveReference(ref)
 	abs.Fragment = ""
+	if len(abs.Path) == 0 {
+		abs.Path = "/"
+	}
 	return fmt.Sprint(abs), nil
 }
